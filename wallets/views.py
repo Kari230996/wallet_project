@@ -74,7 +74,7 @@ class WalletBalanceView(APIView):
     )
     def get(self, request, wallet_uuid):
         try:
-            uuid_obj = UUID(wallet_uuid, version=4)
+            UUID(wallet_uuid, version=4)
         except ValueError:
             return Response({
                 "description": "Некорректный UUID.",

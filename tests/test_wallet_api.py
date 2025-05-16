@@ -1,5 +1,4 @@
 import pytest
-from django.urls import reverse
 from rest_framework.test import APIClient
 from uuid import UUID
 
@@ -25,7 +24,7 @@ class TestWalletAPI:
         response = self.client.get(f"/api/v1/wallets/{wallet_uuid}/")
         assert response.status_code == 200
         body = response.json()
-        assert body["description"] == "Данные кошелька успешно получены"
+        assert body["description"] == "Данные кошелька успешно получены."
         assert body["data"]["uuid"] == wallet_uuid
         assert body["data"]["balance"] == "0.00"
 
@@ -34,7 +33,7 @@ class TestWalletAPI:
             "/api/v1/wallets/00000000-0000-0000-0000-000000000000/")
         assert response.status_code == 404
         assert response.json()[
-            "description"] == "Кошелёк с таким UUID не найден"
+            "description"] == "Кошелёк с таким UUID не найден."
 
     def test_wallet_operation_deposit(self):
         create_response = self.client.post("/api/v1/wallets/")
