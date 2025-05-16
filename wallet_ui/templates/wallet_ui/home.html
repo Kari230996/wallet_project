@@ -1,0 +1,68 @@
+{% extends "wallet_ui/base.html" %}
+
+{% block title %}Главная{% endblock %}
+
+{% block content %}
+<h2>Создать новый кошелёк</h2>
+<form method="post" action="/wallets-ui/create/" class="mb-4">
+    {% csrf_token %}
+    <button class="btn btn-success">Создать</button>
+</form>
+
+
+<h2>Пополнение/Снятие</h2>
+<form method="post" action="/wallets-ui/operation/" class="row g-3">
+    {% csrf_token %}
+    <div class="col-md-6">
+        <input type="text" name="uuid" class="form-control" placeholder="UUID кошелька" required>
+    </div>
+    <div class="col-md-3">
+        <select name="operation_type" class="form-select" required>
+            <option value="">Выберите операцию</option>
+            <option value="DEPOSIT">Пополнение</option>
+            <option value="WITHDRAW">Снятие</option>
+        </select>
+    </div>
+    <div class="col-md-3">
+        <input type="number" name="amount" step="0.01" class="form-control" placeholder="Сумма" required>
+    </div>
+    <div class="col-12">
+        <button class="btn btn-primary">Отправить</button>
+    </div>
+</form>
+{% if operation_success %}
+<div class="alert alert-success mt-3">
+    ✅ Операция выполнена!<br>
+    <strong>UUID:</strong> {{ operation_data.uuid }}<br>
+    <strong>Баланс:</strong> {{ operation_data.balance }} ₽
+</div>
+{% elif operation_error %}
+<div class="alert alert-danger mt-3">
+    ⚠️ {{ operation_error }}
+</div>
+{% endif %}
+
+<hr class="my-5">
+
+<h2>Проверить баланс</h2>
+<form method="get" action="{% url 'check_balance' %}" class="row g-3 mb-3">
+    <div class="col-md-8">
+        <input type="text" name="uuid" class="form-control" placeholder="Введите UUID кошелька" required>
+    </div>
+    <div class="col-md-4">
+        <button class="btn btn-info w-100">Показать баланс</button>
+    </div>
+</form>
+
+{% if balance_data %}
+<div class="alert alert-success">
+    <strong>Баланс:</strong> {{ balance_data.balance }} ₽<br>
+    <strong>UUID:</strong> {{ balance_data.uuid }}
+</div>
+{% elif balance_error %}
+<div class="alert alert-danger">
+    {{ balance_error }}
+</div>
+{% endif %}
+
+{% endblock %}
