@@ -76,7 +76,7 @@ wallet_project/
 
 ## 📩 Контакты
 
-**Разработчик:** [@Karina](mailto:karina.apaeva96@gmail.com)
+**Разработчик:** karina.apaeva96@gmail.com
 ```
 
 
