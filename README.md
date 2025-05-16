@@ -40,6 +40,9 @@ docker-compose exec web python manage.py createsuperuser
 - Swagger: [http://localhost:8000/swagger/](http://localhost:8000/swagger/)
 - ReDoc: [http://localhost:8000/redoc/](http://localhost:8000/redoc/)
 
+⚠️ Все эндпоинты API начинаются с префикса `/api/v1/`.  
+Пример запроса: `POST http://localhost:8000/api/v1/wallets/`
+
 ## 🧪 Тестирование
 
 ```bash
