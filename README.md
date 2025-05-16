@@ -16,7 +16,7 @@
 
 ### 1. Клонируйте репозиторий
 ```bash
-git clone https://github.com/your-username/wallet-project.git
+git clone https://github.com/Kari230996/wallet_project.git
 cd wallet-project
 ```
 
