@@ -145,11 +145,11 @@ class WalletOperationView(APIView):
         serializer.is_valid(raise_exception=True)
         data = serializer.validated_data
 
-        wallet = get_object_or_404(Wallet, uuid=wallet_uuid)
 
         with transaction.atomic():
-            wallet.refresh_from_db()
+            wallet = Wallet.objects.select_for_update().get(uuid=wallet_uuid)
 
+            wallet.refresh_from_db()
             if data["operation_type"] == "DEPOSIT":
                 wallet.balance += data["amount"]
             elif data["operation_type"] == "WITHDRAW":
