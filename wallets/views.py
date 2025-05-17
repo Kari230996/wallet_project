@@ -149,7 +149,6 @@ class WalletOperationView(APIView):
         with transaction.atomic():
             wallet = Wallet.objects.select_for_update().get(uuid=wallet_uuid)
 
-            wallet.refresh_from_db()
             if data["operation_type"] == "DEPOSIT":
                 wallet.balance += data["amount"]
             elif data["operation_type"] == "WITHDRAW":
