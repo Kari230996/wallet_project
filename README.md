@@ -21,6 +21,16 @@ cd wallet_project
 ```
 
 ### 2. Запуск через Docker
+1. Перед запуском переименуйте вручную файл `.env.example` на `.env`
+2. Затем откройте `.env` и замените SECRET_KEY на любой другой:
+```bash
+SECRET_KEY=django-insecure-замените-на-уникальный-ключ
+```
+3. Сгенерировать новый ключ можно командой:
+```bash
+python -c 'from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())'
+```
+4. Запускайте проект командой:
 ```bash
 docker-compose up --build
 ```
