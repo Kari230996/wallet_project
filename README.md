@@ -26,9 +26,10 @@ cd wallet_project
 ```bash
 SECRET_KEY=django-insecure-замените-на-уникальный-ключ
 ```
-3. Сгенерировать новый ключ можно командой:
+3. Сгенерировать новый ключ можно командой на Windows:
 ```bash
-python -c 'from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())'
+python -c "from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())"
+
 ```
 4. Запускайте проект командой:
 ```bash
