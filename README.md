@@ -17,7 +17,7 @@
 ### 1. Клонируйте репозиторий
 ```bash
 git clone https://github.com/Kari230996/wallet_project.git
-cd wallet-project
+cd wallet_project
 ```
 
 ### 2. Запуск через Docker
