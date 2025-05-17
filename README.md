@@ -59,6 +59,16 @@ docker-compose exec web python manage.py createsuperuser
 ```bash
 docker-compose exec web pytest
 ```
+| Тест                                                | Что проверяет                                  |
+| --------------------------------------------------- | ---------------------------------------------- |
+| `test_wallet_create`                                | Создание кошелька, формат UUID и баланс = 0.00 |
+| `test_wallet_balance_success`                       | Получение баланса существующего кошелька       |
+| `test_wallet_balance_not_found`                     | Ответ при несуществующем UUID                  |
+| `test_wallet_operation_deposit`                     | Успешное пополнение                            |
+| `test_wallet_operation_withdraw_success`            | Успешное снятие средств                        |
+| `test_wallet_operation_withdraw_insufficient_funds` | Ошибка при попытке снять больше, чем есть      |
+
+
 
 ## 🖥️ Интерфейс
 
